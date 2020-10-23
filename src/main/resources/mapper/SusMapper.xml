@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ye.functiondemo.dao.SusDao">
+
+    <select id="getSelTbXwKyxsRyList" parameterType="com.ye.functiondemo.model.TbXwKyxsRy"
+            resultType="com.ye.functiondemo.model.TbXwKyxsRy">
+
+        select *
+        FROM  tb_XW_KYXS_RY
+        where ROWNUM <![CDATA[<=]]> 20
+
+    </select>
+<select id="getSelMapTbXwList" parameterType="java.util.Map"  resultType="com.ye.functiondemo.model.TbXwKyxsRy">
+    select *  FROM(
+    SELECT t.*,rownum rn FROM (
+    SELECT
+    /*XXZJBH,KYXSRY_ZJHM,KYXSRY_KYYJ,ASJBH,DJSJ*/
+       *
+    from TB_XW_KYXS_RY
+    <where>
+        <if test="kyxsry_Zjhm != null and kyxsry_Zjhm != ''">
+            and kyxsry_Zjhm like  '%'||#{ kyxsry_Zjhm}||'%' </if>
+        <if test="kyxsry_Kyyj != null and kyxsry_Kyyj != ''">
+            and kyxsry_Kyyj like '%'||#{ kyxsry_Kyyj  }||'%'</if>
+    </where>
+    ORDER BY XXZJBH DESC NULLS LAST)
+    t WHERE ROWNUM <![CDATA[<=]]> #{end}
+    ) WHERE rn > #{begin}
+
+
+</select>
+<select id="qrySusCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM TB_XW_KYXS_RY
+    WHERE
+    ROWNUM <![CDATA[<=]]> 100
+
+        <if test="kyxsry_Zjhm != null and kyxsry_Zjhm != ''">
+            and kyxsry_Zjhm like  '%'||#{ kyxsry_Zjhm}||'%' </if>
+        <if test="kyxsry_Kyyj != null and kyxsry_Kyyj != ''">
+            and kyxsry_Kyyj like '%'||#{ kyxsry_Kyyj  }||'%'</if>
+
+
+
+</select>
+</mapper>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/easyui.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/function.js"></script>
+	<!--<script type="text/javascript" src="js/tools.js"></script>-->
+	<style type="text/css">
+		.textbox-readonly {
+    		background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<li class="item-two" id="ajlbdm" style="width:200px;">
+        <p class="pro"><i  id="ajlbclass" class="fa fa-asterisk"></i>案件类别:</p>
+        <div class="ipt">
+            <input type="text" id="jsasjAjlbdm" name="jsasjAjlbdm" class="val easyui-combotree" data-options="url: './GA_D_XSAJLBDM.js',method:'get',fit:true"/>
+        </div>
+    </li>
+<script type="text/javascript">
+	openCombotree('jsasjAjlbdm');
+	function setCookie(c_name,value,expiredays){
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate()+expiredays);
+		document.cookie=c_name+ "=" +escape(value)+	((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+	} 
+	//获取cookie值
+	function getCookie(name){
+		var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+		if(arr=document.cookie.match(reg))
+			return unescape(arr[2]);
+		else
+			return null;
+	}
+</script>
+</body>
+</html>

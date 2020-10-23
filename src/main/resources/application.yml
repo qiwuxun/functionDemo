@@ -1,0 +1,12 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    name: ORCL  #数据库名
+    url: jdbc:oracle:thin:@47.92.129.99:1600:ORCL #url
+    username: XZXT  #用户名
+    password: XZXT  #密码
+    driver-class-name: oracle.jdbc.driver.OracleDriver  #数据库链接驱动
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.ye.functiondemo.model  # 注意：对应实体类的路径

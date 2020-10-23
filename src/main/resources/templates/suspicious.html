@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可疑线索人员管理</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+   <!-- <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/icon.css">
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/demo.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="easyui-window/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/suspicious.js"></script>
+   <!-- <script type="text/javascript" src="easyui-window/js/jquery.min.js"></script>-->
+    <script type="text/javascript" src="easyui-window/js/function.js"></script>
+    <script type="text/javascript" src="easyui-window/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="easyui-window/js/tools.js"></script>
+</head>
+<body style="margin-left: 20px;">
+<header class="heade-box">
+    <h1>可疑线索人员管理</h1>
+</header>
+<hr style="border: 1px solid #cecece">
+<div>
+    <h4 style="margin-left: 20px;">查询条件</h4><br>
+   <!-- <hr>-->
+    <form class="form-horizontal" name="susListForm">
+        <div class="form-group" style="margin-left: 20px;">
+
+
+            <label for="kyxsry_Zjhm" class="col-sm-1 control-label">证件号码</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="kyxsry_Zjhm" id="kyxsry_Zjhm" placeholder="Jane Doe">
+            </div>
+
+            <label for="kyxsry_Kyyj" class="col-sm-1 control-label">可疑依据</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="kyxsry_Kyyj" id="kyxsry_Kyyj" placeholder="jane.doe@example.com">
+            </div>
+
+        </div>
+   <div class="form-group" style="text-align: center;">
+       <button type="button" class="btn btn-success btn-sm" onclick="doQuery()">查询</button>&nbsp;&nbsp
+       <button type="reset" class="btn btn-default btn-sm">清空</button>&nbsp;&nbsp
+       <button type="button" class="btn btn-info btn-sm">新增</button>
+        </div>
+
+    </form>
+    <hr style="border: 1px solid #cecece">
+    <!--<p>查询结果</p>-->
+</div>
+<div class="main-table-div" id="logTableDiv">
+    <div class="statistics">案件信息<span class="st-span total">0</span>
+    </div>
+    <div style="margin-top:10px" class="table_top">
+        <table class="easyui-datagrid" width="100%" style="border-top:1px dashed #ccc;" id="suspListTable">
+        </table>
+    </div>
+</div>
+<!--<table class="table table-striped">
+   <tbody>
+<th>
+
+
+</th>
+
+   </tbody>
+</table>-->
+<!--
+<div style="margin-top:10px" class="table_top">
+    <table class="easyui-datagrid" width="100%" style="border-top:1px dashed #ccc;" id="jwzypXxTable"
+           pagination="true">
+        <thead>
+        <tr>
+            <th field="cz" width="10%" align="center">操作</th>
+            <th field="xxzjbh" width="10%" align="center">信息主键编号</th>
+            <th field="kyxsry_zjhm" width="10%" align="center">证件号码</th>
+            <th field="kyxsry_kyyj" width="10%" align="center">可疑依据</th>
+            <th field="asjbh" width="10%" align="center">案事件编号</th>
+            <th field="djsj" width="10%" align="center">登记时间</th>
+
+        </tr>
+        </thead>
+    </table>
+
+  &lt;!&ndash;  <table id="dg" title="Client Side Pagination" style="width:700px;height:300px" data-options="
+				rownumbers:true,
+				singleSelect:true,
+				autoRowHeight:false,
+				pagination:true,
+				pageSize:10">
+        <thead>
+        <tr>
+            <th field="inv" width="80">Inv No</th>
+            <th field="date" width="100">Date</th>
+            <th field="name" width="80">Name</th>
+            <th field="amount" width="80" align="right">Amount</th>
+            <th field="price" width="80" align="right">Price</th>
+            <th field="cost" width="100" align="right">Cost</th>
+            <th field="note" width="110">Note</th>
+        </tr>
+        </thead>
+    </table>&ndash;&gt;
+</div>
+-->
+<script>
+    $(function () {
+        // getSy();
+        doQuery();
+
+    });
+
+
+
+</script>
+</body>
+</html>
