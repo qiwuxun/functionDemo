@@ -1,0 +1,291 @@
+.button{
+	font:15px Calibri, Arial, sans-serif;
+
+	/* A semi-transparent text shadow */
+	text-shadow:1px 1px 0 rgba(255,255,255,0.4);
+
+	/* Overriding the default underline styling of the links */
+	text-decoration:none !important;
+	white-space:nowrap;
+
+	display:inline-block;
+	vertical-align:baseline;
+	position:relative;
+	cursor:pointer;
+	padding:5px 10px;
+
+	background-repeat:no-repeat;
+
+	/* The following two rules are fallbacks, in case
+	   the browser does not support multiple backgrounds. */
+
+	background-position:bottom left;
+	background-image:url('button_bg.png');
+
+	/* Multiple backgrounds version. The background images
+	   are defined individually in color classes */
+
+	background-position:bottom left, top right, 0 0, 0 0;
+	background-clip:border-box;
+
+	/* Applying a default border raidus of 8px */
+
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+
+	/* A 1px highlight inside of the button */
+
+	-moz-box-shadow:0 0 1px #fff inset;
+	-webkit-box-shadow:0 0 1px #fff inset;
+	box-shadow:0 0 1px #fff inset;
+
+	/* Animating the background positions with CSS3 */
+	/* Currently works only in Safari/Chrome */
+
+	-webkit-transition:background-position 1s;
+	-moz-transition:background-position 1s;
+	transition:background-position 1s;
+}
+
+.button:hover{
+
+	/* The first rule is a fallback, in case the browser
+	   does not support multiple backgrounds
+	*/
+
+	background-position:top left;
+	background-position:top left, bottom right, 0 0, 0 0;
+}
+
+.button:active{
+	/* Moving the button 1px to the bottom when clicked */
+	bottom:-1px;
+}
+
+/* The three buttons sizes */
+
+.button.big		{ font-size:13px;}
+.button.medium	{ font-size:10px;}
+.button.small	{ font-size:8px;}
+
+/* A more rounded button */
+
+.button.rounded{
+	-moz-border-radius:4em;
+	-webkit-border-radius:4em;
+	border-radius:4em;
+}
+
+
+/* Defining four button colors */
+
+
+/* BlueButton */
+
+.co1.button{
+	color:#0f4b6d !important;
+
+	border:1px solid #84acc3 !important;
+
+	/* A fallback background color */
+	background-color: #48b5f2;
+
+	/* Specifying a version with gradients according to */
+
+	background-image:	url('button_bg.png'), url('button_bg.png'),
+	-moz-radial-gradient(	center bottom, circle,
+			rgba(89,208,244,1) 0,rgba(89,208,244,0) 100px),
+	-moz-linear-gradient(#4fbbf7, #3faeeb);
+
+	background-image:	url('button_bg.png'), url('button_bg.png'),
+	-webkit-gradient(	radial, 50% 100%, 0, 50% 100%, 100,
+			from(rgba(89,208,244,1)), to(rgba(89,208,244,0))),
+	-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4fbbf7), to(#3faeeb));
+}
+
+.co1.button:hover{
+	background-color:#63c7fe;
+
+	background-image:	url('button_bg.png'), url('button_bg.png'),
+	-moz-radial-gradient(	center bottom, circle,
+			rgba(109,217,250,1) 0,rgba(109,217,250,0) 100px),
+	-moz-linear-gradient(#63c7fe, #58bef7);
+
+	background-image:	url('button_bg.png'), url('button_bg.png'),
+	-webkit-gradient(	radial, 50% 100%, 0, 50% 100%, 100,
+			from(rgba(109,217,250,1)), to(rgba(109,217,250,0))),
+	-webkit-gradient(linear, 0% 0%, 0% 100%, from(#63c7fe), to(#58bef7));
+}
+
+/* Green Button */
+
+.co2.button{
+	color:#345903 !important;
+	border:1px solid #96a37b !important;
+	background-color: #79be1e;
+
+	background-image:url('button_bg.png'), url('button_bg.png'), -moz-radial-gradient(center bottom, circle, rgba(162,211,30,1) 0,rgba(162,211,30,0) 100px),-moz-linear-gradient(#82cc27, #74b317);
+	background-image:url('button_bg.png'), url('button_bg.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(162,211,30,1)), to(rgba(162,211,30,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#82cc27), to(#74b317));
+}
+
+.co2.button:hover{
+	background-color:#89d228;
+
+	background-image:url('button_bg.png'), url('button_bg.png'), -moz-radial-gradient(center bottom, circle, rgba(183,229,45,1) 0,rgba(183,229,45,0) 100px),-moz-linear-gradient(#90de31, #7fc01e);
+	background-image:url('button_bg.png'), url('button_bg.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(183,229,45,1)), to(rgba(183,229,45,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#90de31), to(#7fc01e));
+}
+
+/* Orange Button */
+
+.co3.button{
+	color:#693e0a !important;
+	border:1px solid #bea280 !important;
+	background-color: #e38d27;
+
+	background-image:url('button_bg.png'), url('button_bg.png'), -moz-radial-gradient(center bottom, circle, rgba(232,189,45,1) 0,rgba(232,189,45,0) 100px),-moz-linear-gradient(#f1982f, #d4821f);
+	background-image:url('button_bg.png'), url('button_bg.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(232,189,45,1)), to(rgba(232,189,45,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1982f), to(#d4821f));
+}
+
+.co3.button:hover{
+	background-color:#ec9732;
+
+	background-image:url('button_bg.png'), url('button_bg.png'), -moz-radial-gradient(center bottom, circle, rgba(241,192,52,1) 0,rgba(241,192,52,0) 100px),-moz-linear-gradient(#f9a746, #e18f2b);
+	background-image:url('button_bg.png'), url('button_bg.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(241,192,52,1)), to(rgba(241,192,52,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9a746), to(#e18f2b));
+}
+
+.co4.button{
+	color:#525252 !important;
+	border:1px solid #a5a5a5 !important;
+	background-color: #a9adb1;
+
+	background-image:url('button_bg.png'), url('button_bg.png'), -moz-radial-gradient(center bottom, circle, rgba(197,199,202,1) 0,rgba(197,199,202,0) 100px),-moz-linear-gradient(#c5c7ca, #92989c);
+	background-image:url('button_bg.png'), url('button_bg.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(197,199,202,1)), to(rgba(197,199,202,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#c5c7ca), to(#92989c));
+}
+
+.co4.button:hover{
+	background-color:#b6bbc0;
+
+	background-image:url('button_bg.png'), url('button_bg.png'), -moz-radial-gradient(center bottom, circle, rgba(202,205,208,1) 0,rgba(202,205,208,0) 100px),-moz-linear-gradient(#d1d3d6, #9fa5a9);
+	background-image:url('button_bg.png'), url('button_bg.png'), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(202,205,208,1)), to(rgba(202,205,208,0))),-webkit-gradient(linear, 0% 0%, 0% 100%, from(#d1d3d6), to(#9fa5a9));
+}
+
+.box{margin:0px auto;
+	overflow:hidden;
+	position: absolute;
+	z-index: 999}
+.box_changeBg{
+	top: -61px;
+	right: 6%;}
+.box_next{
+	bottom: 0;
+	right: 0;}
+
+.box .link{display:inline-block;
+	width:130px;
+	height:130px;
+	margin:0 30px;
+	position:relative;}
+
+.button1{display:block;
+	width:50px;
+	height:40px;
+	line-height:40px;
+	padding-left:10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	margin:0 auto;
+	font-weight:bold;
+	font-size:18px;
+	text-decoration:none;
+	text-transform:uppercase;
+	font-family:Arial;
+	color:#2DCB70;
+	cursor: pointer;
+	background:url(allow.png) no-repeat 5px center;
+	-moz-transition:ease 0.4s;
+	-o-transition:ease 0.4s;
+	-webkit-transition:ease 0.4s;
+	transition:ease 0.4s;
+	position:absolute;
+	bottom: 15px;
+	right: 10px;}
+
+.box .button1_next{background:url(allow1.png) no-repeat 5px center;}
+.button1:hover{
+	background-position:10px center;}
+
+.button1 .line{position:absolute;
+	background:none;
+	-moz-transition:ease 0.4s;
+	-o-transition:ease 0.4s;
+	-webkit-transition:ease 0.4s;
+	transition:ease 0.4s;}
+
+.button1:hover .line{background:#fff;}
+
+.button1 .line-top{width:0px;
+	height:2px;
+	left:-110%;
+	top:-2px;}
+
+.button1:hover .line-top{width:100%;
+	left:-2px;}
+
+
+.button1 .line-right{width:2px;
+	height:0px;
+	right:-2px;
+	top:-110%;}
+
+.button1:hover .line-right{height:100%;
+	top:-2px;}
+
+
+.button1 .line-bottom{width:2px;
+	height:0px;
+	left:-2px;
+	bottom:-110%;}
+
+.button1:hover .line-bottom{height:100%;
+	bottom:-2px;}
+
+.button1 .line-left{width:0px;
+	height:2px;
+	right:-110%;
+	bottom:-2px;}
+
+.button1:hover .line-left{width:100%;
+	right:-2px;}
+
+.box .tip{position:absolute;
+	padding:0px 14px;
+	height:35px;
+	line-height:35px;
+	background:#2DCB70;
+	color:#fff;
+	font-size:16px;
+	font-weight:normal;
+	text-transform:none;
+	margin:0 auto;
+	opacity:0;
+	border-radius:3px}
+.box .tip_changeBg{
+	top:15px;
+	left: 55px;}
+.box .tip_next{
+	top:15px;
+	left: 55px;}
+.tip em{font-style:normal;}
+
+.tip span{position:absolute;
+	width:0;
+	height:0;
+	overflow:hidden;
+	border:7px solid transparent;
+	border-top-color:#2DCB70;
+	left:50%;
+	margin-left:-3px;
+	bottom:-14px;}

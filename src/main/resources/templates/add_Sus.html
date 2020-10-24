@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可疑人员信息</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!-- <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/icon.css">
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/demo.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="easyui-window/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/suspicious.js"></script>
+    <!-- <script type="text/javascript" src="easyui-window/js/jquery.min.js"></script>-->
+    <script type="text/javascript" src="easyui-window/js/function.js"></script>
+    <script type="text/javascript" src="easyui-window/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="easyui-window/js/tools.js"></script>
+    <script type="text/javascript" src="datepicker/WdatePicker.js"></script>
+</head>
+<body style="margin-left: 20px;">
+<header class="heade-box">
+    <h1>可疑线索人员管理</h1>
+</header>
+<hr style="border: 1px solid #cecece">
+<h4 style="margin-left: 20px;">添加可疑线索</h4><br>
+
+<form class="form-horizontal" name="add_Sus_Form"  id="add_Sus_Form" style="margin: auto;text-align: center;">
+    <div class="form-group">
+        <label for="Model_Zjhm" class="col-sm-2 control-label">证件号码</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="kyxsry_Zjhm" id="Model_Zjhm"
+                   placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Model_Kyyj" class="col-sm-2 control-label">可疑证据</label>
+        <div class="col-sm-8">
+            <textarea class="form-control" rows="3" id="Model_Kyyj"  name="kyxsry_Kyyj" placeholder="最多可填500字"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="add_person" class="col-sm-2 control-label">录入人</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control"  name="xxdjry_Xm" id="add_person" placeholder="Email">
+        </div>
+        <label for="add_address" class="col-sm-2 control-label">录入单位</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control"  name="xxdjdw_Gajgmc" id="add_address" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="add_date" class="col-sm-2 control-label">录入时间</label>
+        <div class="col-sm-2">
+
+            <input name="djsj" id="add_date"
+                   class="Wdate" type="text" onclick="WdatePicker(
+                       {skin:'whyGreen',maxDate:'%y-%M-%d %H:%m:%s',
+                       dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+                  />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+            <button type="button" onclick="doAdd()" class="btn btn-primary">保存</button>
+            <p id="tip"></p>
+        </div>
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    function doAdd() {
+        //addSus
+
+
+        var Model_Zjhm = $.trim($('#Model_Zjhm').val());
+        var Model_Kyyj = $.trim($('#Model_Kyyj').val());
+        var add_person = $.trim($('#add_person').val());
+        var add_address = $.trim($('#add_address').val());
+        var add_date = $.trim($('#add_date').val());
+        alert(Model_Kyyj);
+        if(!Model_Zjhm)
+        {
+            alert('证件号码不能为空！');
+            return false;
+        }
+        if(!Model_Kyyj)
+        {
+            alert('可疑证据不能为空！');
+            return false;
+        }if(!add_person)
+        {
+            alert('录入人不能为空！');
+            return false;
+        }if(!add_address)
+        {
+            alert('录入单位不能为空！');
+            return false;
+        }if(!add_date)
+        {
+            alert('录入时间不能为空！');
+            return false;
+        }
+   //     var form_data = $('#add_Sus_Form').serialize();
+
+        // 异步提交数据到action/add_action.php页面
+        $.ajax(
+            {
+                url: "/addSus",
+                data:serializeObject($("form[name='add_Sus_Form']")),
+                type: "post",
+                beforeSend:function()
+                {
+                   $("#tip").html("<span style='color:blue'>正在处理...</span>");
+
+                    return true;
+                },
+                success:function(data)
+                {
+                    console.log(data);
+                    console.log(data.Msg);
+                        console.log(data.Msg);
+                       // var msg=data.Msg+"";
+                        alert(data.Msg+"");
+                     //   alert(msg);
+
+                         location.reload();
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                },
+                /*complete:function()
+                {
+                //    $('#acting_tips').hide();
+                }*/
+            });
+
+        return false;
+
+    }
+
+
+</script>
+
+</body>
+</html>

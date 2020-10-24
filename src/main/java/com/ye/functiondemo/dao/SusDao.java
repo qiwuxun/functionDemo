@@ -15,4 +15,12 @@ public interface SusDao {
  List<TbXwKyxsRy> getSelMapTbXwList(Map<String, Object> map1);
 
  int qrySusCount(Map<String, Object> map1);
+
+ int insertSus(TbXwKyxsRy tbXwKyxsRy);
+
+ TbXwKyxsRy qrySusById(String xxzjbh);
+
+ int updateTbXwKyxsRy(TbXwKyxsRy tbXwKyxsRy);
+
+ int delTbXwKyxs(String xxzjbh);
 }

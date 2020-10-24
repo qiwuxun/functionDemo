@@ -7,18 +7,22 @@
     <link rel="stylesheet" type="text/css" href="easyui-window/css/demo.css">
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="easyui-window/js/jquery.easyui.min.js"></script>
-
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!-- <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h2>Basic Pagination</h2>
 <p>The user can change page number and page size on page bar.</p>
 <div style="margin:20px 0;"></div>
-<div class="easyui-panel">
+<!--<div class="easyui-panel">
     <div class="easyui-pagination" data-options="total:114"></div>
-</div>
+</div>-->
 
 
-<table id="tt" title="Load Data" class="easyui-datagrid" style="width:550px;height:250px"
+<!--<table id="tt" title="Load Data" class="easyui-datagrid" style="width:550px;height:250px"
        url="data/datagrid_data.json"
        iconCls="icon-save" pagination="true">
     <thead>
@@ -31,7 +35,7 @@
         <th field="status" width="60" align="center">Stauts</th>
     </tr>
     </thead>
-</table>
+</table>-->
 
 
 
@@ -40,7 +44,7 @@
 <p>This sample shows how to implement client side pagination in DataGrid.</p>
 <div style="margin:20px 0;"></div>
 
-<table id="dg" title="Client Side Pagination" style="width:700px;height:300px" data-options="
+<!--<table id="dg" title="Client Side Pagination" style="width:700px;height:300px" data-options="
 				rownumbers:true,
 				singleSelect:true,
 				autoRowHeight:false,
@@ -57,8 +61,90 @@
         <th field="note" width="110">Note</th>
     </tr>
     </thead>
-</table>
+</table>-->
+
+<!-- Button trigger modal -->
+<!--
+<button type="button" onclick="model_show()" class="btn btn-primary btn-lg" >
+    Launch demo modal
+</button>
+-->
+
+<!-- Modal -->
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-sm" data-toggle="modal"  data-target="#addUserModal">
+    添加用户
+</button>
+
+
+<!-- Modal -->
+<!-- 模态框示例（Modal） -->
+<form method="post" action="" class="form-horizontal" role="form" id="form_data" οnsubmit="return check_form()" style="margin: 20px;">
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        可疑人员信息
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="Model_Zjhm" class="col-sm-2 control-label">证件号码</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="Model_Zjhm" name="kyxsry_Zjhm" value=""
+                                       placeholder="请输入用户ID">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Model_Kyyj" class="col-sm-2 control-label">可以证据</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="Model_Kyyj" name="kyxsry_Kyyj" placeholder="最多可填500字"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_person" class="col-sm-2 control-label">录入人:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="add_person" value="" id="add_person"
+                                       placeholder="地址">
+                            </div>
+                            <label for="add_address" class="col-sm-2 control-label">录入单位:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="add_address" value="" id="add_address"
+                                       placeholder="地址">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="add_date" class="col-sm-2 control-label">录入时间</label>
+                            <div class="col-sm-9">
+                                <input type="date" name="djsj" id="add_date">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        提交
+                    </button><span id="tip"> </span>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</form>
+
+
 <script>
+    function model_show(){
+        $('#myModal').modal('show');
+    }
    function getData(){
         var rows = [];
         for(var i=1; i<=800; i++){

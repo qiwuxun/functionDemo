@@ -10,7 +10,7 @@
         where ROWNUM <![CDATA[<=]]> 20
 
     </select>
-<select id="getSelMapTbXwList" parameterType="java.util.Map"  resultType="com.ye.functiondemo.model.TbXwKyxsRy">
+    <select id="getSelMapTbXwList" parameterType="java.util.Map"  resultType="com.ye.functiondemo.model.TbXwKyxsRy">
     select *  FROM(
     SELECT t.*,rownum rn FROM (
     SELECT
@@ -29,7 +29,7 @@
 
 
 </select>
-<select id="qrySusCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    <select id="qrySusCount" parameterType="java.util.Map" resultType="java.lang.Integer">
     SELECT
     count(*)
     FROM TB_XW_KYXS_RY
@@ -44,4 +44,43 @@
 
 
 </select>
+    <select id="qrySusById" parameterType="java.lang.String" resultType="com.ye.functiondemo.model.TbXwKyxsRy">
+        select * from  tb_XW_KYXS_RY
+        where  xxzjbh = #{xxzjbh,jdbcType=VARCHAR}
+    </select>
+    <insert id="insertSus" parameterType="com.ye.functiondemo.model.TbXwKyxsRy">
+        insert into tb_XW_KYXS_RY (xxzjbh,asjbh,kyxsry_Zjhm,
+        kyxsry_kyyj,djsj,gxsj,xxsc_Pdbz,
+        xxdjry_Xm,xxdjdw_Gajgmc)
+        values
+        (#{xxzjbh , jdbcType=VARCHAR},
+        #{asjbh , jdbcType=VARCHAR},
+        #{kyxsry_Zjhm , jdbcType=VARCHAR},
+        #{kyxsry_kyyj , jdbcType=VARCHAR},
+        (to_date(#{djsj, jdbcType=VARCHAR},'yyyy-MM-dd HH24:mi:ss')),
+        (to_date(#{gxsj, jdbcType=VARCHAR},'yyyy-MM-dd HH24:mi:ss')),
+        #{xxsc_Pdbz , jdbcType=VARCHAR},
+        #{xxdjry_Xm , jdbcType=VARCHAR},
+        #{xxdjdw_Gajgmc , jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="updateTbXwKyxsRy" parameterType="com.ye.functiondemo.model.TbXwKyxsRy" >
+        update tb_XW_KYXS_RY
+        set
+        <if test="kyxsry_kyyj != null and kyxsry_kyyj != ''">kyxsry_kyyj = #{ kyxsry_kyyj , jdbcType=VARCHAR },</if>
+        <if test="kyxsry_Zjhm != null and kyxsry_Zjhm != ''">kyxsry_Zjhm = #{ kyxsry_Zjhm , jdbcType=VARCHAR },</if>
+        <if test="djsj != null and djsj != ''">djsj = (to_date(#{djsj, jdbcType=VARCHAR},'yyyy-MM-dd HH24:mi:ss')),</if>
+        <if test="xxdjdw_Gajgmc != null and xxdjdw_Gajgmc != ''">xxdjdw_Gajgmc = #{ xxdjdw_Gajgmc , jdbcType=VARCHAR },</if>
+        <if test="xxdjry_Xm != null and xxdjry_Xm != ''">xxdjry_Xm = #{ xxdjry_Xm , jdbcType=VARCHAR },</if>
+        xxsc_Pdbz='0'
+        where  xxzjbh = #{xxzjbh,jdbcType=VARCHAR}
+
+    </update>
+
+   <delete id="delTbXwKyxs" parameterType="java.lang.String"  >
+   delete from tb_XW_KYXS_RY
+   where xxzjbh = #{xxzjbh,jdbcType=VARCHAR}
+
+   </delete>
+
 </mapper>

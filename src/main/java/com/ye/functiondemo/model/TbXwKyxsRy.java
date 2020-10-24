@@ -17,6 +17,32 @@ public class TbXwKyxsRy {
  private  String  djsj;
  private  String  gxsj;
  private  String xxsc_Pdbz;
+ private  String xxdjry_Xm;//信息登记人员姓名
+ private String xxdjdw_Gajgmc;//信息登记单位公安机构名称
+
+ public String getKyxsry_kyyj() {
+  return kyxsry_kyyj;
+ }
+
+ public void setKyxsry_kyyj(String kyxsry_kyyj) {
+  this.kyxsry_kyyj = kyxsry_kyyj;
+ }
+
+ public String getXxdjry_Xm() {
+  return xxdjry_Xm;
+ }
+
+ public void setXxdjry_Xm(String xxdjry_Xm) {
+  this.xxdjry_Xm = xxdjry_Xm;
+ }
+
+ public String getXxdjdw_Gajgmc() {
+  return xxdjdw_Gajgmc;
+ }
+
+ public void setXxdjdw_Gajgmc(String xxdjdw_Gajgmc) {
+  this.xxdjdw_Gajgmc = xxdjdw_Gajgmc;
+ }
 
  @Override
  public String toString() {
@@ -28,6 +54,8 @@ public class TbXwKyxsRy {
    ", djsj='" + djsj + '\'' +
    ", gxsj='" + gxsj + '\'' +
    ", xxsc_Pdbz='" + xxsc_Pdbz + '\'' +
+   ", xxdjry_Xm='" + xxdjry_Xm + '\'' +
+   ", xxdjdw_Gajgmc='" + xxdjdw_Gajgmc + '\'' +
    '}';
  }
 
@@ -55,14 +83,14 @@ public class TbXwKyxsRy {
   this.kyxsry_Zjhm = kyxsry_Zjhm;
  }
 
- public String getKyxsry_kyyj() {
+ /*public String getKyxsry_kyyj() {
   return kyxsry_kyyj;
  }
 
  public void setKyxsry_kyyj(String kyxsry_kyyj) {
   this.kyxsry_kyyj = kyxsry_kyyj;
  }
-
+*/
  public String getDjsj() {
   return djsj;
  }

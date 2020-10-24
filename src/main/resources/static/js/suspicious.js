@@ -9,8 +9,8 @@ var table_title = [
             var xxzjbh = row.xxzjbh;
             console.log("=========");
             console.log(row);
-            var cz="<a onclick=\"toAjxq('"+xxzjbh+"')\" class='czbtn' >"+"修改"+"</a>";
-            cz+="&nbsp;&nbsp"+"<a onclick=\"toAjxq('"+xxzjbh+"')\" class='czbtn' >"+"删除"+"</a>"
+            var cz="<a onclick=\"toUpd('"+xxzjbh+"')\" class='czbtn' >"+"修改"+"</a>";
+            cz+="&nbsp;&nbsp;"+"<a onclick=\"toDel('"+xxzjbh+"')\" class='easyui-linkbutton' >"+"删除"+"</a>"
            /* if(row.spzt == '审批通过'){
                 if(row.caseSlCode == null || row.caseSlCode == "" ){
                     cz = cz + "  <a onclick=\"toAjrl('"+xxzjbh+"')\" class='czbtn' >"+"认领"+"</a>"
@@ -29,6 +29,7 @@ var table_title = [
 ];
 
 function doQuery(){
+ //   alert("ajax");
     $('#suspListTable').datagrid({
         url: "/queryList",
         columns: [table_title],
@@ -128,11 +129,150 @@ function serializeObject(form){
 };*/
 
 
-function toAjxq(xxzjbh) {
-    var url = "/jwzfk/index?xxzjbh="+xxzjbh;
-    window.open(url);
-}
+function toUpd(xxzjbh) {
+   // var Zjhm=$("#update_Zjhm");
+   // alert($("#update_Zjhm").val()+"==");
+    //alert("我进来了");
+   /* $.ajax({
+        url:'/quy_xxzjbh',
+        data:{"xxzjbh":xxzjbh},
+        type:"get",
+       // async:false,
+        success:function (data) {
+            alert(444444444444);
+          //var tbXwKyxsRy=data.tbXwKyxsRy;
+          console.log("444444444444");
+          console.log(data.tbXwKyxsRy);
+          console.log(data.tbXwKyxsRy.kyxsry_Zjhm);
+              fuzhi(data.tbXwKyxsRy);
+            $("#update_Zjhm").html(data.tbXwKyxsRy.kyxsry_Zjhm);
 
+      //   $("#update_Zjhm").attr("value",data.tbXwKyxsRy.kyxsry_Zjhm);
+         //$("#update_Kyyj").set("1111");
+         // $("#update_Kyyj").val(data.tbXwKyxsRy.kyxsry_Kyyj);
+           alert($("#update_Zjhm").val());
+
+        }
+
+
+    });*/
+    var url = "update_Sus?xxzjbh="+xxzjbh;
+    window.open(url);
+
+
+}
+/*function fuzhi(tbXwKyxsRy) {
+    console.log("tbXwKyxsRy"+tbXwKyxsRy);
+    $("#update_Zjhm").attr("value","12345");
+
+}*/
+function doUpdate() {
+    //console.log(${xxzjbh});
+    var s = window.location.href;
+    var split = s.split("=");
+    var xxzjbh = split[1];
+    console.log("++++++++");
+    console.log(xxzjbh);
+        var  update_Zjhm = $('#update_Zjhm').val();
+     //   alert($('#update_Zjhm').val());
+    var update_Kyyj = $('#update_Kyyj').val();
+    var update_person = $('#update_person').val();
+    var update_address = $('#update_address').val();
+    var update_date = $('#update_date').val();
+     alert(update_Kyyj);
+
+    if(!update_Zjhm)
+    {
+        alert('证件号码不能为空！');
+        return false;
+    }
+    if(!update_Kyyj)
+    {
+        alert('可疑证据不能为空！');
+        return false;
+    }if(!update_person)
+    {
+        alert('录入人不能为空！');
+        return false;
+    }if(!update_address)
+    {
+        alert('录入单位不能为空！');
+        return false;
+    }if(!update_date)
+    {
+        alert('录入时间不能为空！');
+        return false;
+    }
+    /*serializeObject($("form[name='add_Sus_Form']"))
+    * {'xxzjbh':xxzjbh,'kyxsry_Zjhm':update_Zjhm,'kyxsry_Kyyj':update_Kyyj,
+                'xxdjry_xm':update_person,'xxdjdw_Gajgmc':update_address,
+                'djsj':update_date}
+    * */
+    $.ajax(
+        {
+            url: "/up_Sus",
+            data:{'xxzjbh':xxzjbh,'kyxsry_Zjhm':update_Zjhm,'kyxsry_Kyyj':update_Kyyj,
+                'xxdjry_xm':update_person,'xxdjdw_Gajgmc':update_address,
+                'djsj':update_date},
+            type: "post",
+            beforeSend:function()
+            {
+                $("#msg_up").html("<span style='color:blue'>正在处理...</span>");
+
+                return true;
+            },
+            success:function(data)
+            {
+                console.log(data);
+                console.log(data.Msg);
+                console.log(data.Msg);
+                // var msg=data.Msg+"";
+                alert(data.Msg+"");
+                //   alert(msg);
+                     window.open("suspicious");
+                location.reload();
+            },
+            error:function()
+            {
+                alert('请求出错');
+            },
+            /*complete:function()
+            {
+            //    $('#acting_tips').hide();
+            }*/
+        });
+
+    return false;
+
+
+}
+function add_Sus() {
+   // window.location.href="add_Sus";
+    /*alert("这里是按钮点击事件");*/
+   var url ="add_Sus";
+   window.open(url);
+}
+function toDel(xxzjbh) {
+    $.messager.confirm('删除信息', 'Are you confirm this?', function(r){
+        if (r){
+            /*alert('confirmed: '+r);*/
+            $.ajax({
+                url:'del_Sus',
+                data:{'xxzjbh':xxzjbh},
+                type:'post',
+                success:function (data) {
+                    alert(data.Msg);
+                    location.reload();
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                }
+
+            })
+        }
+    });
+}
 /*
 function toAjfk(xxzjbh) {
     var url = "/jwzfk/index?xxzjbh="+xxzjbh+"&flag=fk";

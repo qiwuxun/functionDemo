@@ -28,4 +28,24 @@ public class SusServiceImp implements  SusService {
  public int qrySusCount(Map<String, Object> map1) {
   return susDao.qrySusCount(map1);
  }
+
+ @Override
+ public int insertSus(TbXwKyxsRy tbXwKyxsRy) {
+  return susDao.insertSus(tbXwKyxsRy);
+ }
+
+ @Override
+ public TbXwKyxsRy qrySusById(String xxzjbh) {
+  return susDao.qrySusById(xxzjbh);
+ }
+
+ @Override
+ public int updateTbXwKyxsRy(TbXwKyxsRy tbXwKyxsRy) {
+  return susDao.updateTbXwKyxsRy(tbXwKyxsRy);
+ }
+
+ @Override
+ public int delTbXwKyxs(String xxzjbh) {
+  return susDao.delTbXwKyxs(xxzjbh);
+ }
 }

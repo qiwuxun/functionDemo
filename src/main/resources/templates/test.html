@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="12333">Title</title>
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/icon.css">
+    <link rel="stylesheet" type="text/css" href="easyui-window/css/demo.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="easyui-window/js/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <!-- <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2>Interactive Messager</h2>
+	<p>Click on each button to display interactive message box.</p>
+	<div style="margin:20px 0;">
+ 	<a href="#" class="easyui-linkbutton" onclick="confirm1();">Confirm</a>
+ 	<a href="#" class="easyui-linkbutton" onclick="prompt1()">Prompt</a>
+        <
+	</div>
+
+</body>
+<script>
+   	function confirm1(){
+        		$.messager.confirm('删除信息', 'Are you confirm this?', function(r){
+      			if (r){
+   				alert('confirmed: '+r);
+          			}
+  	});
+  	}
+	function prompt1(){
+	$.messager.prompt('My Title', 'Please type something', function(r){
+          			if (r){
+                					alert('you type: '+r);
+             			}
+         		});
+  	}
+ </script>
+</body>
+
+
+</html>
